@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="/">작성하기</a>
+	<table>
+		<thead>
+			<tr>
+				<td>번호</td>
+				<td>제목</td>
+				<td>작성자</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto:${list}">
+				<td th:utext="${dto.no}">번호</td>
+				<td th:utext="${dto.title}">제목</td>
+				<td th:utext="${dto.writer}">작성자</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

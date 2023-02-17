@@ -12,6 +12,15 @@
 	</insert>
 	
 	<select id="findAll" resultType="com.example.demo.entity.BoardDTO">
-	select * from board order by no desc
+	select * from board
+		<where>
+			<if test="target != null">  <!-- 타겟이 널 아닐때  -->
+			${target} like '%${search}%'
+			</if>
+		</where>
+	<!-- https://mybatis.org/mybatis-3/dynamic-sql.html -->
+	<!-- ${}, 달러여야 문자가 아니라 변수로받아옴 이스케이프 -->
+	<!--  http://localhost:8080/boards?target=title&searsh=10 써봐야 나옴, 일단 오류뜨는데 써보면-->
+	order by no desc
 	</select>
 </mapper>

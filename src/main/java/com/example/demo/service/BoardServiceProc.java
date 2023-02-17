@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.example.demo.entity.BoardDTO;
+import com.example.demo.entity.BoardsearchDTO;
 import com.example.demo.mapper.BoardMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,12 @@ public class BoardServiceProc implements BoardService{
 		mapper.save(dto);
 	}
 
+
 	@Override
-	public void findAll(Model model) {
-		model.addAttribute("list", mapper.findAll());
+	public void findAll(BoardsearchDTO dto, Model model) {
+		model.addAttribute("list", mapper.findAll(dto));
 		
 	}
+
 
 }
